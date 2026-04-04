@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JWT Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            width: 400px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        textarea {
+            width: 100%;
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            resize: none;
+        }
+
+        label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>JWT Token Generator</h2>
+
+        <label>Username</label>
+        <input type="text" id="username" placeholder="Enter username">
+
+        <label>Age</label>
+        <input type="number" id="age" placeholder="Enter age">
+
+        <label>Full Name</label>
+        <input type="text" id="fullname" placeholder="Enter full name">
+
+        <button id="generateBtn">Generate Token</button>
+
+        <textarea id="tokenOutput" rows="8" readonly placeholder="Generated token will appear here..."></textarea>
+    </div>
+
+    <script type="module">
+        import { generateToken } from './token.js';
+
+        const btn = document.getElementById("generateBtn");
+
+        btn.addEventListener("click", () => {
+            const username = document.getElementById("username").value;
+            const age = document.getElementById("age").value;
+            const fullname = document.getElementById("fullname").value;
+
+            if (!username || !age || !fullname) {
+                alert("Please fill all fields!");
+                return;
+            }
+
+            const token = generateToken(username, age, fullname);
+            document.getElementById("tokenOutput").value = token;
+        });
+    </script>
+
+</body>
+</html>

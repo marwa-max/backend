@@ -6,6 +6,7 @@ export function generateToken() {
         Username: "ahmed",
         Age: 27,
         Fullname: "ahmed Hassan"
+
     };
 
     const key = "$AhmedIsAwesome!";
