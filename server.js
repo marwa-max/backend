@@ -1,4 +1,5 @@
 import express from "express";
+
 import { generateToken } from "./generate.js";
 import { validateToken } from "./validate.js";
 import { decodeToken } from "./decode.js";
@@ -22,7 +23,16 @@ app.post("/decode", (req, res) => {
     const decoded = decodeToken(token);
     res.json(decoded);
 });
+app.post("/api/ValidateJWT", (req, res) => {
+  const user_name = req.body.name;
 
-app.listen(3000, () => {
-    console.log("Server running on http://localhost:3000");
+  const responseData = (user_name === 'ahmed')
+    ? { "response": true }
+    : { "response": false };
+
+  console.log(" Requête reçue, username =", user_name); 
+  res.send(responseData);
+});
+app.listen(3100, () => {
+    console.log("Server running on http://localhost:3100");
 });
