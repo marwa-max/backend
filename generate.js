@@ -3,7 +3,7 @@ const { KJUR } = pkg;
 
 export function generateToken() {
     const claims = {
-        Username: "ahmed",
+        Username: "amna",
         Age: 27,
         Fullname: "ahmed Hassan"
 
