@@ -5,7 +5,7 @@ export function decodeToken(token) {
     const parts = token.split(".");
 
     const header = KJUR.jws.JWS.readSafeJSONString(
-        b64utos(parts[0])
+        b64utos(parts[1])
     );
 
     const payload = KJUR.jws.JWS.readSafeJSONString(
